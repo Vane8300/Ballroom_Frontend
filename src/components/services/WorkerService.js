@@ -12,6 +12,14 @@ const options = {
 
 class WorkerService {
 
+    getWorkersByHallId(hallId) {
+        return axios.get(WORKERS_API_URL + "/workersReservations/" + hallId);
+    }
+
+    getNoWorkersByHallId(hallID) {
+        return axios.get(WORKERS_API_URL + "/hallsWorkers/" + hallID)
+    }
+
     getNoHallsPerWorker() {
         return axios.get(WORKERS_API_URL + "/hallsPerWorker", options);
     }

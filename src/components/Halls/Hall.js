@@ -2,6 +2,8 @@ import React from "react";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
 import "../styling/Reservation.css";
 import HallService from "../services/HallService";
+import ViewGuests from "../Guests/ViewGuests";
+import ViewWorkers from "../Workers/ViewWorkers";
 
 class Hall extends React.Component {
     state = {
@@ -15,6 +17,7 @@ class Hall extends React.Component {
                 console.log(res.data)
                 this.setState({halls: res.data})
             })
+
     }
 
     render() {
@@ -29,6 +32,7 @@ class Hall extends React.Component {
                             <TableCell className={"res-h-cell"} align={"center"}>Location</TableCell>
                             <TableCell className={"res-h-cell"} align={"center"}>Dimension</TableCell>
                             <TableCell className={"res-h-cell"} align={"center"}>Price</TableCell>
+                            <TableCell className={"res-h-cell"} align={"center"}>NoOfWorkers</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -45,6 +49,9 @@ class Hall extends React.Component {
                                 </TableCell>
                                 <TableCell align={"center"}>
                                     {hall.price}
+                                </TableCell>
+                                <TableCell align={"center"}>
+                                    <ViewWorkers>{hall.id}</ViewWorkers>
                                 </TableCell>
                             </TableRow>
                         ))}

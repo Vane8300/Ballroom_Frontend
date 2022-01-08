@@ -42,8 +42,6 @@ class Reservation extends React.Component {
                 </div>
 
             </div>
-
-
             <TableContainer className={"res-table-container"}>
                 <Table stickyHeader={true} className={"table-res"} aria-label={"sticky table"}>
                     <TableHead className={"table-res-h"}>

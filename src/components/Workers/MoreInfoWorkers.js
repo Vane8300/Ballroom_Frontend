@@ -72,8 +72,10 @@ export default function MoreInfoWorkers() {
                     </p>
                     {
                        Object.keys(list).map((obj, nr) => {
-                        return <ListGroup.Item>
-                               <div>{obj} {nr}</div>
+                        return <ListGroup.Item className={"item-guests"} >
+                               <div className={"list-elem"}>
+                                   {obj} works at {nr} halls
+                               </div>
                            </ListGroup.Item>
                        })
                     }
