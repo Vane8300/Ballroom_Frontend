@@ -1,9 +1,15 @@
-import React from "react";
-import ReservationService from "./services/ReservationService";
-import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@material-ui/core";
-import {TiDeleteOutline} from "react-icons/all";
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function CancelReservationDialog(id) {
+import {FaRegTrashAlt} from 'react-icons/fa';
+import GuestService from "../services/GuestService";
+
+export default function ConfirmDeleteDialog(id) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -15,15 +21,15 @@ export default function CancelReservationDialog(id) {
     };
 
     const handleCloseConfirm = () => {
-        ReservationService.deleteReservation(id.children)
+        GuestService.deleteGuest(id.children);
         handleClose()
     };
 
 
     return (
         <div>
-            <Button variant="outlined"  onClick={handleClickOpen}>
-                <TiDeleteOutline/>
+            <Button onClick={handleClickOpen}>
+                <FaRegTrashAlt/>
             </Button>
 
             <Dialog
@@ -36,10 +42,10 @@ export default function CancelReservationDialog(id) {
                     style = {{
                         textAlign: 'center',
                         borderBottom: '1px solid #424874',
-                        color: '#424874',
+                        color: '#476072',
                     }}
                     id="alert-dialog-title">
-                    {"Vrei sa anulezi rezervarea?"}
+                    {"Do you want to delete this person from the list?"}
                 </DialogTitle>
 
                 <DialogContent>
@@ -49,22 +55,21 @@ export default function CancelReservationDialog(id) {
                             color: "silver",
                         }}
                         id="alert-dialog-description">
-                        Esti sigur? O rezervare anulata nu va mai putea fi recuperata.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseConfirm}
                             style={{
-                                color: '#424874',
+                                color: '#476072',
                             }}>
-                        Da
+                        Yes
                     </Button>
                     <Button onClick={handleClose}
                             style={{
-                                color: '#424874',
+                                color: '#476072',
                             }}
                             autoFocus>
-                        Nu
+                        No
                     </Button>
                 </DialogActions>
             </Dialog>

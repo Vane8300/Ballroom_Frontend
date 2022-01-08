@@ -9,7 +9,7 @@ import {
     DialogTitle,
     TextField
 } from "@material-ui/core";
-import AuthenticationService from "./services/AuthenticationService";
+import AuthenticationService from "../services/AuthenticationService";
 
 
 export default function Register() {

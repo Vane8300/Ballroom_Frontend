@@ -1,0 +1,35 @@
+.guests-list {
+    width: 50%;
+    border: 2px solid grey;
+    margin-left: 25%;
+    border-radius: 10px;
+}
+.list {
+    width: 50%;
+    height: 100%;
+}
+
+.guests-list .item-guests {
+    margin-left: 10px;
+    display: flex;
+    padding: 10px;
+}
+.guests-list .item-guests .guest-details {
+    display: flex;
+    width: 100%;
+    font-family: Hervetica;
+}
+
+.guests-list .item-guests .btn {
+    display: flex;
+}
+.info {
+    font-size: 20px;
+    margin-left: 10px;
+    text-align: center;
+    color: grey;
+    font-family: Hervetica;
+}
+.covid {
+    margin-right: 10px;
+}

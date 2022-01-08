@@ -10,7 +10,27 @@ const options = {
     }
 }
 
-class HallService {
+class ReservationService {
+
+    getExpensiveReservations() {
+        return axios.get(RESERVATIONS_API_URL +"/expensiveReservations");
+    }
+
+    getCheapReservations() {
+        return axios.get(RESERVATIONS_API_URL +"/cheapReservations");
+    }
+
+    getAllReservationByDimension() {
+        return axios.get(RESERVATIONS_API_URL + "/dimensionEqualThanMax");
+    }
+
+    getAllReservationsWithoutGuests() {
+        return axios.get(RESERVATIONS_API_URL + "/noGuests");
+    }
+
+    getAllConfirmedReservations(value) {
+        return axios.get(RESERVATIONS_API_URL + "/confirmedReservations/" + value);
+    }
 
     getReservationsByUser(userId) {
         return axios.get(RESERVATIONS_API_URL + "/all/" + userId);
@@ -36,8 +56,6 @@ class HallService {
     editReservation(id, description, reservationDate, time) {
         axios.put(RESERVATIONS_API_URL + "/edit/" + id, {
             "description": description,
-            // "location": location,
-            // "number_of_people": number_of_people,
             "reservationDate": reservationDate,
             "time": time
         }, options).then(res => {
@@ -45,12 +63,9 @@ class HallService {
         })
     }
 
-    addReservation(confirmed, description, reservationDate, time, hall, userId) {
+    addReservation(description, reservationDate, time, hall, userId) {
         axios.post(RESERVATIONS_API_URL, {
-            "confirmed": confirmed,
             "description": description,
-            // "location": location,
-            // "number_of_people": number_of_people,
             "reservationDate": reservationDate,
             "time": time,
             "hall": {
@@ -62,4 +77,4 @@ class HallService {
         }, options).then(res => window.location.reload())
     }
 }
-export default new HallService();
+export default new ReservationService();

@@ -9,3 +9,14 @@
     background-color: #476072;
     color: #EEEEEE;
 }
+
+.search {
+    padding: 10px;
+}
+
+.bttns-res {
+    display: inline;
+}
+.bttns-res .btn-me {
+    display: inline-block;
+}

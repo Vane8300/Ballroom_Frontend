@@ -6,9 +6,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {TextField} from "@material-ui/core";
 import {MdEdit} from "react-icons/md";
-import ReservationService from "./services/ReservationService";
+import GuestService from "../services/GuestService";
 
-export default function EditLocationDialog(id) {
+export default function EditGuests(id) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -20,20 +20,19 @@ export default function EditLocationDialog(id) {
     };
 
     const handleCloseConfirm = () => {
-        let description = document.getElementById("description").value;
-        // let location = document.getElementById('location').value;
-        // let number_of_people = document.getElementById('number_of_people').value;
-        let reservationDate = document.getElementById('reservationDate').value;
-        let time = document.getElementById('time').value;
+        let firstName = document.getElementById("firstName").value;
+        let lastName = document.getElementById('lastName').value;
+        let phone_number = document.getElementById('phone_number').value;
 
-        ReservationService.editReservation(id.children, description, reservationDate, time);
+        GuestService.editGuest(id.children, firstName, lastName, phone_number);
+        console.log(id.children);
         handleClose()
     };
 
 
     return (
         <div>
-            <Button className={"addButton"} variant="outlined" onClick={handleClickOpen}>
+            <Button onClick={handleClickOpen}>
                 <MdEdit/>
             </Button>
             <Dialog
@@ -50,52 +49,34 @@ export default function EditLocationDialog(id) {
                         color: '#424874',
                         fontFamily: "Helvetica",
                     }}
-                    id="alert-dialog-title">{"Modifica Reservare"}
+                    id="alert-dialog-title">{"Edit Guest Details"}
                 </DialogTitle>
 
                 <DialogContent>
                     <TextField
                         className={"txt-field-add-pa"}
-                        id="description"
-                        label="Description:"
+                        id="firstName"
+                        label="FirstName:"
                         type="text"
-                        defaultValue={id.children.description}
-                        fullWidth
-                    />
-
-                    {/*<TextField*/}
-                    {/*    className={"txt-field-add-pa"}*/}
-                    {/*    id="location"*/}
-                    {/*    label="Location:"*/}
-                    {/*    type="text"*/}
-                    {/*    defaultValue={id.children.location}*/}
-                    {/*    fullWidth*/}
-                    {/*/>*/}
-
-                    {/*<TextField*/}
-                    {/*    className={"txt-field-add-pa"}*/}
-                    {/*    id="number_of_people"*/}
-                    {/*    label="NoOfPeople:"*/}
-                    {/*    type="text"*/}
-                    {/*    defaultValue={id.children.number_of_people}*/}
-                    {/*    fullWidth*/}
-                    {/*/>*/}
-
-                    <TextField
-                        className={"txt-field-add-pa"}
-                        id="reservationDate"
-                        label="Reservation Date:"
-                        type="text"
-                        defaultValue={id.children.reservationDate}
+                        defaultValue={id.children.firstName}
                         fullWidth
                     />
 
                     <TextField
                         className={"txt-field-add-pa"}
-                        id="time"
-                        label="Time:"
+                        id="lastName"
+                        label="Last Name:"
                         type="text"
-                        defaultValue={id.children.time}
+                        defaultValue={id.children.lastName}
+                        fullWidth
+                    />
+
+                    <TextField
+                        className={"txt-field-add-pa"}
+                        id="phone_number"
+                        label="Phone Number:"
+                        type="text"
+                        defaultValue={id.children.phone_number}
                         fullWidth
                     />
 

@@ -1,7 +1,7 @@
 import React from "react";
 import UserService from '../components/services/UserService'
 import {Button, TextField} from "@material-ui/core";
-import Logout from "./services/Logout";
+import Logout from "./Authorization/Logout";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -21,8 +21,11 @@ class Profile extends React.Component {
             .then(res => {
 
                 const userID = res.data.id;
+                const firstName = res.data.firstName;
+                const lastName = res.data.lastName;
                 sessionStorage.setItem('user_id', userID);
-                console.log(userID);
+                sessionStorage.setItem("firstName", firstName);
+                sessionStorage.setItem("lastName", lastName);
                 this.setState({user: res.data})
             })
     }
@@ -32,7 +35,7 @@ class Profile extends React.Component {
         return (
             <body className={"users-body"}>
             <h1 className={"profile-header"}>Profile</h1>
-            <div><Logout/></div>
+            <Logout/>
             {this.state.user != null ?
                 <div className={"all-photo-txt"}>
 

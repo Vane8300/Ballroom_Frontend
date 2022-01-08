@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import axios from "axios";
 import '../styling/Login.css';
-import avatar from '../img/avatar1.svg';
-import ballroom from '../img/ball.svg';
-import Register from '../components/Register';
+import avatar from '../../img/avatar1.svg';
+import ballroom from '../../img/ball.svg';
+import Register from './Register';
 
 async function login(email, password) {
     axios.post('http://localhost:8081/user/login',

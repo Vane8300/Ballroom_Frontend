@@ -1,17 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {TextField} from "@material-ui/core";
-import {MdAdd} from "react-icons/md";
-import ReservationService from "./services/ReservationService";
-import HallService from "./services/HallService";
+import {MdEdit} from "react-icons/md";
+import ReservationService from "../services/ReservationService";
 
-export default function AddReservationComponent(id) {
+export default function EditLocationDialog(id) {
     const [open, setOpen] = React.useState(false);
-    const [hall, setHalls] = React.useState([]);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -21,28 +19,12 @@ export default function AddReservationComponent(id) {
         setOpen(false);
     };
 
-    useEffect(() => {
-        getHalls();
-    }, []);
-
-    const getHalls = () => {
-        HallService.getAllHalls()
-            .then(res =>{
-                setHalls(res.data);
-            })
-    }
-
-
     const handleCloseConfirm = () => {
-        let confirmed = document.getElementById('confirmed').value;
         let description = document.getElementById("description").value;
-        // let number_of_people = document.getElementById("number_of_people").value;
-        let time = document.getElementById('time').value;
         let reservationDate = document.getElementById('reservationDate').value;
-        // let location = document.getElementById("location").value;
-        let hall = document.getElementById("hall").value;
-        ReservationService.addReservation(confirmed, description, reservationDate, time, hall, sessionStorage.getItem("user_id"));
+        let time = document.getElementById('time').value;
 
+        ReservationService.editReservation(id.children, description, reservationDate, time);
         handleClose()
     };
 
@@ -50,7 +32,7 @@ export default function AddReservationComponent(id) {
     return (
         <div>
             <Button className={"addButton"} variant="outlined" onClick={handleClickOpen}>
-                <MdAdd/>
+                <MdEdit/>
             </Button>
             <Dialog
                 className={"dialog-add-pa"}
@@ -66,47 +48,25 @@ export default function AddReservationComponent(id) {
                         color: '#424874',
                         fontFamily: "Helvetica",
                     }}
-                    id="alert-dialog-title">{"Adauga locatie"}
+                    id="alert-dialog-title">{"Modifica Reservare"}
                 </DialogTitle>
 
                 <DialogContent>
                     <TextField
                         className={"txt-field-add-pa"}
-                        id="confirmed"
-                        label="confirmed:"
-                        text="text"
-                        fullWidth
-                    />
-
-                    <TextField
-                        className={"txt-field-add-pa"}
                         id="description"
                         label="Description:"
                         type="text"
+                        defaultValue={id.children.description}
                         fullWidth
                     />
-
-                    {/*<TextField*/}
-                    {/*    className={"txt-field-add-pa"}*/}
-                    {/*    id="location"*/}
-                    {/*    label="Location:"*/}
-                    {/*    text="text"*/}
-                    {/*    fullWidth*/}
-                    {/*/>*/}
-
-                    {/*<TextField*/}
-                    {/*    className={"txt-field-add-pa"}*/}
-                    {/*    id="number_of_people"*/}
-                    {/*    label="NoOfPeople:"*/}
-                    {/*    type="text"*/}
-                    {/*    fullWidth*/}
-                    {/*/>*/}
 
                     <TextField
                         className={"txt-field-add-pa"}
                         id="reservationDate"
                         label="Reservation Date:"
-                        text="text"
+                        type="text"
+                        defaultValue={id.children.reservationDate}
                         fullWidth
                     />
 
@@ -114,17 +74,11 @@ export default function AddReservationComponent(id) {
                         className={"txt-field-add-pa"}
                         id="time"
                         label="Time:"
-                        text="text"
+                        type="text"
+                        defaultValue={id.children.time}
                         fullWidth
                     />
-                    <select id={"hall"}>
-                        {
-                            hall?.map((obj) => {
-                                return <option hall={obj.id} value={obj.id}>{obj.name}</option>
-                            })
-                        }
 
-                    </select>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseConfirm}

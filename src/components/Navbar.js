@@ -1,12 +1,17 @@
-import  '../styling/Navbar.css';
+import  './styling/Navbar.css';
+import Logout from "./Authorization/Logout";
+import React from "react";
 export default function Navbar(){
     return(
         <div className={"Navbar"}>
             <div className={"allSide"}>
                 <div className={"links"}>
                     <a href="home">Acasa</a>
-                    <a href="reservations">Reservations</a>
                     <a href={"profile"}>Profile</a>
+                    <a href="reservations">Reservations</a>
+                    <a href={"workers"}>Workers</a>
+                    <a href={"halls"}>Halls</a>
+                    <a href={"confirmed"}>Confirmed Reservations</a>
                 </div>
             </div>
         </div>

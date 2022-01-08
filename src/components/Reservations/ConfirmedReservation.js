@@ -1,37 +1,30 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import ReservationService from "../services/ReservationService";
+import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@material-ui/core";
+import {RiReservedLine} from "react-icons/all";
+import ViewGuests from "../Guests/ViewGuests";
+import ViewConfirmedReservations from "./ViewConfirmedReservations";
 
-import {FaRegTrashAlt} from 'react-icons/fa';
+export default function ConfirmedReservation(id) {
+     const [open, setOpen] = React.useState(false);
 
-import HallService from "./services/HallService";
-import ReservationService from "./services/ReservationService";
-export default function ConfirmDeleteDialog(id) {
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+     const handleClickOpen = () => {
+       setOpen(true);
+     }
 
     const handleClose = () => {
         setOpen(false);
-    };
+    }
 
     const handleCloseConfirm = () => {
+        ReservationService.confirmReservation(id.children)
         handleClose()
     };
-
-
     return (
         <div>
             <Button variant="outlined"  onClick={handleClickOpen}>
-                <FaRegTrashAlt/>
+                <RiReservedLine/>
             </Button>
-
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -42,10 +35,10 @@ export default function ConfirmDeleteDialog(id) {
                     style = {{
                         textAlign: 'center',
                         borderBottom: '1px solid #424874',
-                        color: '#476072',
+                        color: '#424874',
                     }}
                     id="alert-dialog-title">
-                    {"Vrei sa stergi?"}
+                    {"Confirma rezervarea"}
                 </DialogTitle>
 
                 <DialogContent>
@@ -55,19 +48,19 @@ export default function ConfirmDeleteDialog(id) {
                             color: "silver",
                         }}
                         id="alert-dialog-description">
-                        Esti sigur? Datele sterse nu vor mai putea fi recuperate.
+                        Esti sigur ca vrei sa confirmi rezervarea?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseConfirm}
                             style={{
-                                color: '#476072',
+                                color: '#424874',
                             }}>
                         Da
                     </Button>
                     <Button onClick={handleClose}
                             style={{
-                                color: '#476072',
+                                color: '#424874',
                             }}
                             autoFocus>
                         Nu
@@ -76,4 +69,5 @@ export default function ConfirmDeleteDialog(id) {
             </Dialog>
         </div>
     );
+
 }

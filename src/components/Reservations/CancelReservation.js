@@ -1,27 +1,29 @@
-import React from 'react';
-import ReservationService from "./services/ReservationService";
+import React from "react";
+import ReservationService from "../services/ReservationService";
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@material-ui/core";
-import {RiReservedLine} from "react-icons/all";
+import {TiDeleteOutline} from "react-icons/all";
 
-export default function ConfirmReservation(id) {
-     const [open, setOpen] = React.useState(false);
+export default function CancelReservationDialog(id) {
+    const [open, setOpen] = React.useState(false);
 
-     const handleClickOpen = () => {
-       setOpen(true);
-     }
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
     const handleClose = () => {
         setOpen(false);
-    }
+    };
 
     const handleCloseConfirm = () => {
-        ReservationService.confirmReservation(id.children)
+        ReservationService.deleteReservation(id.children)
         handleClose()
     };
+
+
     return (
         <div>
             <Button variant="outlined"  onClick={handleClickOpen}>
-                <RiReservedLine/>
+                <TiDeleteOutline/>
             </Button>
 
             <Dialog
@@ -37,7 +39,7 @@ export default function ConfirmReservation(id) {
                         color: '#424874',
                     }}
                     id="alert-dialog-title">
-                    {"Confirma rezervarea"}
+                    {"Vrei sa anulezi rezervarea?"}
                 </DialogTitle>
 
                 <DialogContent>
@@ -47,7 +49,7 @@ export default function ConfirmReservation(id) {
                             color: "silver",
                         }}
                         id="alert-dialog-description">
-                        Esti sigur ca vrei sa confirmi rezervarea?
+                        Esti sigur? O rezervare anulata nu va mai putea fi recuperata.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -68,5 +70,4 @@ export default function ConfirmReservation(id) {
             </Dialog>
         </div>
     );
-
 }

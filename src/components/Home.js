@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styling/Home.css';
+import './styling/Home.css';
 import {useNavigate} from "react-router-dom";
-import Login from './Login';
-import Logout from "./services/Logout";
+import Login from './Authorization/Login';
+import Logout from "./Authorization/Logout";
 
 export default function Home() {
 

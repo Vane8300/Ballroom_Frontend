@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Component} from "react";
+
 
 const HALL_API_URL = 'http://localhost:8081/halls';
 
