@@ -12,7 +12,7 @@ class Hall extends React.Component {
 
     constructor(props) {
         super(props);
-        HallService.getAllHalls()
+        HallService.getAllHallsWithReservations()
             .then(res=> {
                 console.log(res.data)
                 this.setState({halls: res.data})
@@ -32,7 +32,7 @@ class Hall extends React.Component {
                             <TableCell className={"res-h-cell"} align={"center"}>Location</TableCell>
                             <TableCell className={"res-h-cell"} align={"center"}>Dimension</TableCell>
                             <TableCell className={"res-h-cell"} align={"center"}>Price</TableCell>
-                            <TableCell className={"res-h-cell"} align={"center"}>NoOfWorkers</TableCell>
+                            <TableCell className={"res-h-cell"} align={"center"}>Workers</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -9,7 +9,6 @@ export default function Navbar(){
                     <a href="home">Acasa</a>
                     <a href={"profile"}>Profile</a>
                     <a href="reservations">Reservations</a>
-                    <a href={"workers"}>Workers</a>
                     <a href={"halls"}>Halls</a>
                     <a href={"confirmed"}>Confirmed Reservations</a>
                 </div>

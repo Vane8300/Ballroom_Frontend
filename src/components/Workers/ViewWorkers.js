@@ -63,11 +63,11 @@ export default function ViewWorkers(id) {
                         color: "#476072"
                     }}
                     id="alert-dialog-title">
-                    {"Guests"}
+                    {"Workers"}
                 </DialogTitle>
                 <div className={"info"}>
                     <p>
-                        The number of guests is: {noOfWorkers}
+                        The number of workers for this hall is: {noOfWorkers}
                     </p>
                 </div>
                 <div className={"guests-list"}>
@@ -75,7 +75,9 @@ export default function ViewWorkers(id) {
                         workers?.map((w) => {
                             return <ListGroup.Item className={"item-guests"}  key={w.id} value={w.id}>
                                 <div className={"guest-details"}>
-                                    {w.firstname} {w.lastname} {w.email} {w.phone}
+                                    {"Nume: " + w.firstname + " " + w.lastname}
+                                    {" " + w.phone} {w.email}
+                                    {", Concediu: " + w.start_vacation + "/" + w.end_vacation}
                                 </div>
                             </ListGroup.Item>
                         })

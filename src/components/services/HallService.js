@@ -12,6 +12,10 @@ const options = {
 }
 class HallService {
 
+    getAllHallsWithReservations() {
+        return axios.get(HALL_API_URL + "/allHallsWithReservations");
+    }
+
     getAllHalls() {
         return axios.get(HALL_API_URL + "/all", options);
     }
