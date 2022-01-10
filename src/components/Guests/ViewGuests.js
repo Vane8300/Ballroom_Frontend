@@ -12,7 +12,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import AddGuest from "./AddGuest";
 import EditGuest from './EditGuests';
 import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@material-ui/core";
-import avatar from '../img/avatar1.svg';
+import avatar from '../img/contact.svg';
 
 export default function ViewGuests(id) {
     const [open, setOpen] = React.useState(false);
@@ -72,13 +72,13 @@ export default function ViewGuests(id) {
                         <MdClose/>
                     </IconButton>
                 </Toolbar>
-                <div className={"info"}>
-                    <p>The number of guest is: {noOfGuests}</p>
+                <div className={"info-guest"}>
+                    <p>The number of guests is: {noOfGuests}</p>
                 </div>
                 <div className={"contact-list"}>
                     {guests?.map((obj) => {
                             return <ListGroup.Item className={"item-contact"}  key={obj.id} value={obj.id}>
-                                <Card className={"card-contact"} classname={"col-lg-4 mb-2"}>
+                                <Card className={"card-contact"}>
                                     <CardActionArea>
                                         <CardMedia component={"img"} className={"img-avatar"} image={avatar} alt={"guest"}/>
                                         <CardContent>
@@ -86,19 +86,17 @@ export default function ViewGuests(id) {
                                                 {obj.firstName} {obj.lastName}
                                             </Typography>
                                             <Typography variant={"body2"} color={"textSecondary"}>
-                                                {obj.phone_number + " "}
-                                                {
-                                                    obj.covid_certification ? <BsCheckCircle/>: <FcCancel/>
-                                                }
+                                                {"Phone: " + obj.phone_number + " "}
+                                                {obj.covid_certification ? <BsCheckCircle/>: <FcCancel/> }
                                             </Typography>
-                                            <div className={"bttns-contact"}>
+                                            <Typography className={"bttns-contact"}>
                                                 <div className={"bttn-contact-me"}>
                                                     <ConfirmDeleteDialog>{obj.id}</ConfirmDeleteDialog>
                                                 </div>
-                                                <div className={"bttn-contact-me"}>
+                                                <div className={"bttn-contact-me1"}>
                                                     <EditGuest>{obj.id}</EditGuest>
                                                 </div>
-                                            </div>
+                                            </Typography>
                                         </CardContent>
                                     </CardActionArea>
                                 </Card>

@@ -1,4 +1,4 @@
-.info-guest {
+.info-worker {
     text-align: center;
     background-color: #476072;
     font-size: 18px;
@@ -6,7 +6,7 @@
     height: 40px;
 }
 
-.contact-list {
+.contact-list-workers {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -18,39 +18,28 @@
     overflow-y: hidden;
 }
 
-.contact-list::-webkit-scrollbar {
+.contact-list-workers::-webkit-scrollbar {
     height: 30px;
 }
 
-.contact-list::-webkit-scrollbar-track {
+.contact-list-workers::-webkit-scrollbar-corner{
+   background-color: #476072;
+}
+
+.contact-list-workers::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-.contact-list::-webkit-scrollbar-thumb {
+.contact-list-workers::-webkit-scrollbar-thumb {
     visibility: hidden;
 }
 
-.item-contact {
+.item-worker {
     padding: 10px;
 }
 
-.card-contact {
+.card-worker {
     width: 250px;
     height: 400px;
     padding: 10px;
-}
-
-.bttns-contact {
-    display: inline;
-}
-
-.bttn-contact-me {
-    display: inline-block;
-    margin-top: 20px;
-}
-
-.bttn-contact-me1 {
-    display: inline-block;
-    margin-left: 40%;
-    margin-top: 20px;
 }

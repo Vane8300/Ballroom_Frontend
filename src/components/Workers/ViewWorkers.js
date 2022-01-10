@@ -3,12 +3,15 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import {BsFillPersonLinesFill, FcCancel, MdClose} from "react-icons/all";
+import {BsFillPersonLinesFill, MdClose} from "react-icons/all";
 import '../styling/ViewGuests.css';
 import DialogTitle from "@material-ui/core/DialogTitle";
 import WorkerService from "../services/WorkerService";
 import {ListGroup} from "react-bootstrap";
 import MoreInfoWorkers from "./MoreInfoWorkers";
+import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@material-ui/core";
+import contact from '../img/contact.svg';
+import '../styling/ViewWorkers.css';
 
 
 export default function ViewWorkers(id) {
@@ -48,41 +51,54 @@ export default function ViewWorkers(id) {
                 <Toolbar style={{
                     backgroundColor: "#476072",
                     border: "none",
+                    borderBottom: "2px solid white",
                 }}>
                     <MoreInfoWorkers/>
+                    <DialogTitle
+                        style = {{
+                            textAlign: 'center',
+                            fontFamily: "Hervetica",
+                            color: "white",
+                            marginLeft: "40%"
+                        }}
+                        id="alert-dialog-title">
+                        {"Workers"}
+                    </DialogTitle>
                     <IconButton onClick={handleClose}
                                 style={{
                                     color: "white",
-                                    marginLeft: "90%"
+                                    marginLeft: "40%"
                                 }}>
                         <MdClose/>
                     </IconButton>
-
-
                 </Toolbar>
-                <DialogTitle
-                    style = {{
-                        textAlign: 'center',
-                        fontFamily: "Hervetica",
-                        color: "#476072"
-                    }}
-                    id="alert-dialog-title">
-                    {"Workers"}
-                </DialogTitle>
-                <div className={"info"}>
+                <div className={"info-worker"}>
                     <p>
                         The number of workers for this hall is: {noOfWorkers}
                     </p>
                 </div>
-                <div className={"guests-list"}>
-                    {
-                        workers?.map((w) => {
-                            return <ListGroup.Item className={"item-guests"}  key={w.id} value={w.id}>
-                                <div className={"guest-details"}>
-                                    {"Nume: " + w.firstname + " " + w.lastname}
-                                    {" " + w.phone} {w.email}
-                                    {", Concediu: " + w.start_vacation + "/" + w.end_vacation}
-                                </div>
+                <div className={"contact-list-workers"}>
+                    {workers?.map((w) => {
+                            return <ListGroup.Item className={"item-worker"}  key={w.id} value={w.id}>
+                                <Card className={"card-worker"}>
+                                    <CardActionArea>
+                                        <CardMedia component={"img"} className={"img-worker"} image={contact} alt={"guest"}/>
+                                        <CardContent>
+                                            <Typography gutterBottom variant={"h5"} component={"div"}>
+                                                {w.firstname} {w.lastname}
+                                            </Typography>
+                                            <Typography variant={"body2"} color={"textSecondary"}>
+                                                {"Phone: " + w.phone}
+                                            </Typography>
+                                            <Typography variant={"body2"} color={"textSecondary"}>
+                                                {"Email: " + w.email}
+                                            </Typography>
+                                            <Typography variant={"body2"} color={"textSecondary"}>
+                                                {"Vacation: " + w.start_vacation + "/" + w.end_vacation}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
                             </ListGroup.Item>
                         })
                     }
