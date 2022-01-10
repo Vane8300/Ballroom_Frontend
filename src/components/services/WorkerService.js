@@ -12,6 +12,26 @@ const options = {
 
 class WorkerService {
 
+    getWorkerWithExpensiveHalls() {
+        return axios.get(WORKERS_API_URL + "/workersForExpensiveHalls");
+    }
+
+    getWorkerWithCheapHalls() {
+        return axios.get(WORKERS_API_URL + "/workersForCheapHalls");
+    }
+
+    getAllWorkersInVacation() {
+        return axios.get(WORKERS_API_URL + "/workersInVacation");
+    }
+
+    getAllWorkersThatEndsVacationBeforeReservations() {
+        return axios.get(WORKERS_API_URL + "/workersEndsVacationBeforeReservations")
+    }
+
+    getAllAvailableWorkersForReservations() {
+        return axios.get(WORKERS_API_URL + "/workersAvailableForAllReservations");
+    }
+
     getWorkersByHallId(hallId) {
         return axios.get(WORKERS_API_URL + "/workersReservations/" + hallId);
     }

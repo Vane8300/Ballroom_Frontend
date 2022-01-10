@@ -11,6 +11,8 @@ import '../styling/ViewGuests.css';
 import DialogTitle from "@material-ui/core/DialogTitle";
 import AddGuest from "./AddGuest";
 import EditGuest from './EditGuests';
+import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@material-ui/core";
+import avatar from '../img/avatar1.svg';
 
 export default function ViewGuests(id) {
     const [open, setOpen] = React.useState(false);
@@ -49,51 +51,61 @@ export default function ViewGuests(id) {
                 onClose={handleClose}>
                 <Toolbar style={{
                     backgroundColor: "#476072",
-                    border: "none",
+                    borderBottom: "2px solid white",
                 }}>
                     <AddGuest>{id.children}</AddGuest>
+                    <DialogTitle
+                        style = {{
+                            textAlign: 'center',
+                            fontFamily: "Hervetica",
+                            color: "white",
+                            marginLeft: "40%"
+                        }}
+                        id="alert-dialog-title">
+                        {"Guests: "}
+                    </DialogTitle>
                     <IconButton onClick={handleClose}
                                 style={{
                                     color: "white",
-                                    marginLeft: "90%"
+                                    marginLeft: "40%"
                                 }}>
                         <MdClose/>
                     </IconButton>
                 </Toolbar>
-                <DialogTitle
-                    style = {{
-                        textAlign: 'center',
-                        fontFamily: "Hervetica",
-                        color: "#476072"
-                    }}
-                    id="alert-dialog-title">
-                    {"Guests"}
-                </DialogTitle>
                 <div className={"info"}>
-                   <p>
-                     The number of guests is: {noOfGuests}
-                   </p>
+                    <p>The number of guest is: {noOfGuests}</p>
                 </div>
-                <div className={"guests-list"}>
-                        {
-                            guests?.map((obj) => {
-                                return <ListGroup.Item className={"item-guests"}  key={obj.id} value={obj.id}>
-                                    <div className={"covid"}>
-                                        {
-                                            obj.covid_certification ? <BsCheckCircle/>: <FcCancel/>
-                                        }
-                                    </div>
-                                    <div className={"guest-details"}>
-                                        {obj.firstName} {obj.lastName} {obj.phone_number}
-                                    </div>
-                                    <div className={"btn"}>
-                                        <ConfirmDeleteDialog>{obj.id}</ConfirmDeleteDialog>
-                                        <EditGuest>{obj.id}</EditGuest>
-                                    </div>
-                                </ListGroup.Item>
-                            })
-                        }
-                   </div>
+                <div className={"contact-list"}>
+                    {guests?.map((obj) => {
+                            return <ListGroup.Item className={"item-contact"}  key={obj.id} value={obj.id}>
+                                <Card className={"card-contact"} classname={"col-lg-4 mb-2"}>
+                                    <CardActionArea>
+                                        <CardMedia component={"img"} className={"img-avatar"} image={avatar} alt={"guest"}/>
+                                        <CardContent>
+                                            <Typography gutterBottom variant={"h5"} component={"div"}>
+                                                {obj.firstName} {obj.lastName}
+                                            </Typography>
+                                            <Typography variant={"body2"} color={"textSecondary"}>
+                                                {obj.phone_number + " "}
+                                                {
+                                                    obj.covid_certification ? <BsCheckCircle/>: <FcCancel/>
+                                                }
+                                            </Typography>
+                                            <div className={"bttns-contact"}>
+                                                <div className={"bttn-contact-me"}>
+                                                    <ConfirmDeleteDialog>{obj.id}</ConfirmDeleteDialog>
+                                                </div>
+                                                <div className={"bttn-contact-me"}>
+                                                    <EditGuest>{obj.id}</EditGuest>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </ListGroup.Item>
+                    })
+                    }
+                </div>
             </Dialog>
         </div>
     );

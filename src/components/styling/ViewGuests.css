@@ -1,35 +1,55 @@
-.guests-list {
-    width: 50%;
-    border: 2px solid grey;
-    margin-left: 25%;
-    border-radius: 10px;
-}
-.list {
-    width: 50%;
-    height: 100%;
+.info {
+    text-align: center;
+    background-color: #476072;
+    font-size: 18px;
+    color: #EEEEEE;
+    height: 40px;
 }
 
-.guests-list .item-guests {
-    margin-left: 10px;
+.contact-list {
+    align-items: center;
     display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: #476072;
+    white-space: nowrap;
+    height: 100vw;
+}
+
+.item-contact {
+    height: 400px;
+}
+
+.contact-list::-webkit-scrollbar {
+    height: 30px;
+}
+
+.contact-list::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.contact-list::-webkit-scrollbar-thumb {
+    visibility: hidden;
+}
+
+.card-contact {
+    height: 100%;
+    width: 100%;
+}
+
+.item-contact {
     padding: 10px;
 }
-.guests-list .item-guests .guest-details {
-    display: flex;
-    width: 100%;
-    font-family: Hervetica;
+
+.bttns-contact {
+
+    display: inline;
 }
 
-.guests-list .item-guests .btn {
-    display: flex;
+.bttn-contact-me {
+    margin-top: 30%;
+    padding: 10px;
+    display: inline-block;
 }
-.info {
-    font-size: 20px;
-    margin-left: 10px;
-    text-align: center;
-    color: grey;
-    font-family: Hervetica;
-}
-.covid {
-    margin-right: 10px;
-}
+

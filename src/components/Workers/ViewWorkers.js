@@ -8,6 +8,7 @@ import '../styling/ViewGuests.css';
 import DialogTitle from "@material-ui/core/DialogTitle";
 import WorkerService from "../services/WorkerService";
 import {ListGroup} from "react-bootstrap";
+import MoreInfoWorkers from "./MoreInfoWorkers";
 
 
 export default function ViewWorkers(id) {
@@ -48,6 +49,7 @@ export default function ViewWorkers(id) {
                     backgroundColor: "#476072",
                     border: "none",
                 }}>
+                    <MoreInfoWorkers/>
                     <IconButton onClick={handleClose}
                                 style={{
                                     color: "white",
@@ -55,6 +57,8 @@ export default function ViewWorkers(id) {
                                 }}>
                         <MdClose/>
                     </IconButton>
+
+
                 </Toolbar>
                 <DialogTitle
                     style = {{

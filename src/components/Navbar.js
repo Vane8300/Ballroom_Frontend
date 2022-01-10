@@ -1,6 +1,7 @@
 import  './styling/Navbar.css';
 import Logout from "./Authorization/Logout";
 import React from "react";
+import MoreInfoWorkers from "./Workers/MoreInfoWorkers";
 export default function Navbar(){
     return(
         <div className={"Navbar"}>
